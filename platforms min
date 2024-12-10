@@ -1,0 +1,28 @@
+import java.util.Arrays;
+
+class Main {
+    public static void main(String[] args) {
+        double arr[] = {9.00, 9.40, 9.50, 11.00, 15.00, 18.00}; // Arrival times
+        double departure[] = {9.10, 12.00, 11.20, 11.30, 19.00, 20.00}; // Departure times
+
+        // Sort both arrays
+        Arrays.sort(arr);
+        Arrays.sort(departure);
+
+        int i = 0, j = 0, platform = 0, maxPlatforms = 0;
+        while (i < arr.length && j < departure.length) {
+            if (arr[i] <= departure[j]) {
+                platform++;
+                i++;
+            }
+           
+            else {
+                platform--;
+                j++;
+            }
+            maxPlatforms = Math.max(maxPlatforms, platform);
+        }
+
+        System.out.println("Minimum number of platforms required: " + maxPlatforms);
+    }
+}
